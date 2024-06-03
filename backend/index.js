@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+const trendsRouter = require('./routes/trendsRoutes');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -13,6 +15,7 @@ app.use(
     })
   );
 app.use(express.json());
+app.use('/api/trends', trendsRouter); //http://localhost:3000/api/trends/trending
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
