@@ -9,39 +9,30 @@ const fetchGoogleTrends = async (keyword, stockSymbol) => {
   const companyUrl = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${stockSymbol}&apikey=${alphaVantageApiKey}`;
 
   try {
+    // Validate the stock symbol
+    const companyResponse = await axios.get(companyUrl);
+    if (!companyResponse.data.Name) {
+      throw new Error("Invalid stock symbol");
+    }
+    const companyName = companyResponse.data.Name;
+
     // Fetch Google Trends data
     const response = await axios.get(trendsUrl);
-    console.log(
-      "Google Trends API response:",
-      JSON.stringify(response.data, null, 2)
-    );
-
     const trendData = response.data.interest_over_time.timeline_data
-      .map((item) => {
-        const value =
+      .map((item) => ({
+        date: item.date,
+        value:
           item.values &&
           item.values[0] &&
           item.values[0].extracted_value !== undefined
             ? item.values[0].extracted_value
-            : null;
-        if (value === null) {
-          console.error("Invalid item in timeline_data:", item);
-          return null;
-        }
-        return {
-          date: item.date, // Ensure the date is correctly mapped
-          value: value.toString(), // Ensure value is a string to match schema
-        };
-      })
-      .filter((item) => item !== null); // Filter out invalid items
+            : null,
+      }))
+      .filter((item) => item.value !== null); // Filter out invalid items
 
     if (trendData.length === 0) {
       throw new Error("No valid trend data found");
     }
-
-    // Fetch company details
-    const companyResponse = await axios.get(companyUrl);
-    const companyName = companyResponse.data.Name;
 
     // Check if the stock already exists in the Stock collection
     let stock = await Stock.findOne({ symbol: stockSymbol });
@@ -57,12 +48,10 @@ const fetchGoogleTrends = async (keyword, stockSymbol) => {
       existingTrend.trendValues = trendData;
       existingTrend.fetchedAt = Date.now();
       await existingTrend.save();
-      console.log("Trend updated in database:", existingTrend);
     } else {
       // Create a new trend entry
       const trend = new Trend({ stockSymbol, keyword, trendValues: trendData });
       await trend.save();
-      console.log("Trend saved to database:", trend);
     }
 
     return trendData;
