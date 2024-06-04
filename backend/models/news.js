@@ -8,6 +8,6 @@ const NewsSchema = new mongoose.Schema({
   publishedAt: { type: Date, required: true },
   source: { type: String },
   content: { type: String },
-});
+}, { collection: 'News' });
 
 module.exports = mongoose.model('News', NewsSchema);

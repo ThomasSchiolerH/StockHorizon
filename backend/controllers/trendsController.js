@@ -4,6 +4,16 @@ const {
   fetchSocialMediaMentions,
 } = require("../services/fetchData");
 const Trend = require("../models/trend");
+const News = require("../models/news");
+const {
+  fetchNewsCountsForStocks,
+  fetchTrendingStocksFromFinnhub,
+  fetchStockDetails,
+  fetchStockDetailsFromAlphaVantage,
+  fetchTrendingStocksFromAlphaVantage,
+  fetchTrendingStocksFromPolygon,
+  fetchStockDetailsFromPolygon,
+} = require("../services/fetchDataOverview");
 
 const getTrendingStocks = async (req, res) => {
   try {
@@ -18,13 +28,46 @@ const getTrendingStocks = async (req, res) => {
       fetchedAt: -1,
     });
 
-    res.json({ googleTrends, trends });
+    // Fetch news data
+    const newsData = await fetchNews(stockSymbol);
+
+    res.json({ googleTrends, trends, newsCount: newsData.count });
   } catch (error) {
     console.error("Error getting trending stocks:", error.message);
     res.status(400).json({ error: error.message });
   }
 };
 
+const getTrendingOverview = async (req, res) => {
+  try {
+    const stockSymbols = await fetchTrendingStocksFromFinnhub();
+    //const stockSymbols = await fetchTrendingStocksFromAlphaVantage();
+    //const stockSymbols = await fetchTrendingStocksFromPolygon();
+    const newsCounts = await fetchNewsCountsForStocks(stockSymbols);
+
+    const combinedData = await Promise.all(
+      stockSymbols.map(async (symbol) => {
+        const stockDetails = await fetchStockDetails(symbol);
+        //const stockDetails = await fetchStockDetailsFromAlphaVantage(symbol);
+        //const stockDetails = await fetchStockDetailsFromPolygon(symbol);
+        return {
+          stockSymbol: symbol,
+          totalNewsCount: newsCounts[symbol] || 0,
+          stockDetails,
+        };
+      })
+    );
+
+    combinedData.sort((a, b) => b.totalNewsCount - a.totalNewsCount);
+
+    res.json(combinedData);
+  } catch (error) {
+    console.error("Error getting trending overview:", error.message);
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getTrendingStocks,
+  getTrendingOverview,
 };

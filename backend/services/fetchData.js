@@ -1,6 +1,8 @@
 const axios = require("axios");
 const Trend = require("../models/trend");
 const Stock = require("../models/stock");
+const News = require('../models/news');
+const NewsAPI = require('newsapi');
 
 const fetchGoogleTrends = async (keyword, stockSymbol) => {
   const apiKey = process.env.SERPAPI_KEY;
@@ -64,21 +66,41 @@ const fetchGoogleTrends = async (keyword, stockSymbol) => {
   }
 };
 
-const fetchNews = async (symbol) => {
-  // Implement API call to a news service
-};
-// const fetchNews = async (symbol) => {
-//     const apiKey = process.env.NEWS_API_KEY;
-//     const url = `https://newsapi.org/v2/everything?q=${symbol}&apiKey=${apiKey}`;
+const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 
-//     try {
-//       const response = await axios.get(url);
-//       return response.data.articles;
-//     } catch (error) {
-//       console.error('Error fetching news data:', error.message);
-//       throw error;
-//     }
-//   };
+const fetchNews = async (symbol) => {
+  try {
+    const response = await newsapi.v2.everything({
+      q: symbol,
+      language: 'en',
+      sortBy: 'relevancy',
+      pageSize: 100, // Max articles to fetch
+    });
+
+    const articles = response.articles;
+
+    // Save the news articles to the database (optional)
+    const newsData = articles.map(article => ({
+      stockSymbol: symbol,
+      title: article.title,
+      description: article.description,
+      url: article.url,
+      publishedAt: new Date(article.publishedAt),
+      source: article.source.name,
+      content: article.content,
+    }));
+
+    await News.insertMany(newsData, { ordered: false });
+
+    // Use response.totalResults to get the total number of articles if available
+    const totalResults = response.totalResults || articles.length;
+
+    return { count: totalResults, articles };
+  } catch (error) {
+    console.error('Error fetching news data:', error.message);
+    throw error;
+  }
+};
 
 const fetchSocialMediaMentions = async (symbol) => {
   // Implement API call to Twitter, Reddit, StockTwits, etc.
