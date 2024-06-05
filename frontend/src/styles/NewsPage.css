@@ -1,0 +1,33 @@
+.news-page {
+    padding: 20px;
+  }
+  
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .news-article {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .news-article h2 {
+    margin: 0;
+  }
+  
+  .news-article p {
+    margin: 10px 0;
+  }
+  
+  .news-article a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .news-article a:hover {
+    text-decoration: underline;
+  }
+  

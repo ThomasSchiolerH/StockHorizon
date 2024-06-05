@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import GraphPage from './pages/GraphPage';
+import NewsPage from './pages/NewsPage';
 
-function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/')
-      .then(response => setData(response.data))
-      .catch(error => console.error(error));
-  }, []);
-
+const App = () => {
   return (
-    <div className="App">
-      <h1>Trending Stocks</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/graph/:symbol" element={<GraphPage />} />
+        <Route path="/news" element={<NewsPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

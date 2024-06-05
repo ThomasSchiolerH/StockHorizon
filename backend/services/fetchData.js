@@ -79,7 +79,6 @@ const fetchNews = async (symbol) => {
 
     const articles = response.articles;
 
-    // Save the news articles to the database (optional)
     const newsData = articles.map(article => ({
       stockSymbol: symbol,
       title: article.title,
@@ -90,17 +89,17 @@ const fetchNews = async (symbol) => {
       content: article.content,
     }));
 
+    console.log(`Fetched ${newsData.length} news articles for symbol: ${symbol}`);
+
     await News.insertMany(newsData, { ordered: false });
 
-    // Use response.totalResults to get the total number of articles if available
-    const totalResults = response.totalResults || articles.length;
-
-    return { count: totalResults, articles };
+    return { count: articles.length, articles };
   } catch (error) {
     console.error('Error fetching news data:', error.message);
     throw error;
   }
 };
+
 
 const fetchSocialMediaMentions = async (symbol) => {
   // Implement API call to Twitter, Reddit, StockTwits, etc.
