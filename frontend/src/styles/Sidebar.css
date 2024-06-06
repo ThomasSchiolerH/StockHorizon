@@ -1,77 +1,117 @@
 /* src/styles/Sidebar.css */
 .sidebar {
-    width: 60px;
-    height: 100vh;
-    background-color: var(--side-bar);
-    color: #fff;
-    transition: width 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px; /* Add padding at the top for spacing */
-  }
-  
-  .sidebar:hover {
-    width: 200px;
-  }
-  
-  .sidebar-icon {
-    padding: 10px;
-    margin-bottom: 20px; /* Add space below the logo */
-  }
-  
-  .logo {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .sidebar-nav {
-    flex: 1;
-    width: 100%;
-  }
-  
-  .sidebar-item {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-    box-sizing: border-box; /* Ensure padding and width do not exceed parent width */
-    margin-bottom: 10px; /* Add space between each item */
-  }
-  
-  .sidebar-item:hover {
-    background-color: #333;
-  }
-  
-  .icon {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-  }
-  
-  .text {
-    flex: 1;
-    margin-left: 10px;
-    display: none;
-    white-space: nowrap;
-  }
-  
-  .sidebar:hover .text {
-    display: inline;
-  }
-  
-  .sidebar-footer {
-    width: 100%;
-    margin-bottom: 10px; /* Add space before the footer items */
-  }
-  
-  .sidebar:hover ~ .main-content {
-    margin-left: 200px; /* Adjust this margin to match the width of your expanded sidebar */
-  }
-  
+  width: 60px;
+  height: 100vh;
+  background-color: var(--side-bar);
+  color: #ffffff;
+  transition: width 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+}
+
+.sidebar:hover {
+  width: 200px;
+}
+
+.sidebar-icon {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.sidebar-nav {
+  flex: 1;
+  width: 100%;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  background-color: transparent; /* Ensure no background color */
+}
+
+.sidebar-item::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 6px;
+  right: 6px;
+  background-color: #27305298; /* Blue highlight */
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.sidebar-item:hover::before,
+.sidebar-item.active::before {
+  opacity: 1;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+  background-color: transparent !important; /* Ensure no background color */
+}
+
+.sidebar-item:hover .icon,
+.sidebar-item.active .icon {
+  fill: #5272ff; /* Change icon color when hovered or active */
+}
+
+.sidebar-item:hover .text,
+.sidebar-item.active .text {
+  color: #5272ff; /* Change text color when hovered or active */
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  fill: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  flex: 1;
+  margin-left: 10px;
+  display: none;
+  white-space: nowrap;
+  color: #cccccc;
+  font-weight: 500;
+}
+
+.sidebar:hover .text {
+  display: inline;
+}
+
+.sidebar-footer {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.sidebar:hover ~ .main-content {
+  margin-left: 200px;
+}

@@ -1,0 +1,21 @@
+/* src/styles/ComingSoon.css */
+.coming-soon-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: var(--background);
+    color: #ffffff;
+  }
+  
+  .coming-soon-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .coming-soon-page p {
+    font-size: 1.5em;
+  }
+  

@@ -1,30 +1,45 @@
+/* src/styles/Home.css */
 .home-page {
   text-align: center;
   padding: 50px;
+  padding-top: 150px; /* Increased padding to create more space at the top */
   min-height: 100vh; /* Ensure the home-page fills the entire viewport height */
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Align items to the start (top) */
   align-items: center; /* Center align items horizontally */
   background-color: var(--background); /* Ensure background color is applied */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
-.home-page h1 {
-  font-size: 2.5em;
+.home-page .title {
+  font-size: 3.0em;
   color: #FFFFFF; /* White text for the header */
   margin-top: 0; /* Remove any default margin */
+  font-family: 'Arial', sans-serif; /* Example font for title */
+  margin-bottom: 40px; /* Added space between title and subtitle */
 }
 
-.home-page p {
+.home-page .title-confidence {
+  display: block;
+  color: var(--light-green); /* Green color for "Confidence" */
+  font-family: 'Verdana', serif; /* Example font for "Confidence" */
+  font-size: 1.2em; /* Adjust size if needed */
+}
+
+.home-page .subtitle {
   font-size: 1.2em;
-  color: #B0B0B0; /* Light gray text for the paragraph */
+  color: #FFFFFF; /* White text for the subtitle */
+  font-weight: bold;
   margin-top: 0; /* Remove any default margin */
+  font-family: 'Verdana', sans-serif; /* Example font for subtitle */
+  margin-bottom: 40px; /* Added space between subtitle and search bar */
 }
 
 .input__container--variant {
   background: linear-gradient(to bottom, #F3FFF9, #F3FFF9); /* Light background for input container */
   border-radius: 1.5em;
-  max-width: 20em; /* Adjusted width */
+  max-width: 40em; /* Adjusted width */
   padding: 1em;
   box-shadow: 0em 1em 3em #beecdc64; /* Darker shadow */
   margin: 20px auto; /* Center the search bar */
@@ -47,7 +62,7 @@
 }
 
 .input__search--variant {
-  width: 16em; /* Adjusted width */
+  width: 35em; /* Adjusted width */
   border-radius: 13em;
   outline: none;
   border: none;
@@ -95,7 +110,6 @@
 .login-placeholder button:hover {
   background-color: #565656; /* Lighter dark color on hover */
 }
-
 
 .modal {
   position: fixed;

@@ -35,8 +35,11 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      <h1>Gain A Trading Advantage</h1>
-      <p>Tie news to your investments, by leveraging data from multiple sources.</p>
+      <h1 className="title">
+        Invest with
+        <span className="title-confidence">Confidence</span>
+      </h1>
+      <p className="subtitle">Know what is trending, to gain an advantage</p>
       <div className="input__container input__container--variant">
         <div className="shadow__input shadow__input--variant"></div>
         <input 
