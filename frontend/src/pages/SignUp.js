@@ -56,6 +56,9 @@ const SignUp = () => {
         />
         <button type="submit">Sign Up with Email</button>
       </form>
+      <p className="signin-link">
+        Already have an account? <button onClick={() => navigate('/signin')} className="button">Sign In</button>
+      </p>
     </div>
   );
 };
