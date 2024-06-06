@@ -28,6 +28,7 @@ const GraphPage = () => {
   const { symbol } = useParams();
   const [chartData, setChartData] = useState(null);
   const [newsData, setNewsData] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const GraphPage = () => {
         setNewsData(news);
       } catch (error) {
         console.error('Error fetching stock data:', error);
+        setError(error.response ? error.response.data.error : 'An unexpected error occurred');
       }
     };
 
@@ -65,7 +67,9 @@ const GraphPage = () => {
   return (
     <div className="graph-page">
       <h1>Stock Data for {symbol}</h1>
-      {chartData ? (
+      {error ? (
+        <p className="error-message">Error: {error}</p>
+      ) : chartData ? (
         <div className="chart-container">
           <Line data={chartData} />
         </div>

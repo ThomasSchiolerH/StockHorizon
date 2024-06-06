@@ -13,6 +13,13 @@ const fetchGoogleTrends = async (keyword, stockSymbol) => {
   try {
     // Validate the stock symbol
     const companyResponse = await axios.get(companyUrl);
+    console.log('AlphaVantage company response:', companyResponse.data);
+
+    if (companyResponse.data.Note || companyResponse.data.Information) {
+      // Handle rate limit error or other informational responses
+      throw new Error("API rate limit reached or invalid API key");
+    }
+
     if (!companyResponse.data.Name) {
       throw new Error("Invalid stock symbol");
     }
@@ -20,6 +27,8 @@ const fetchGoogleTrends = async (keyword, stockSymbol) => {
 
     // Fetch Google Trends data
     const response = await axios.get(trendsUrl);
+    console.log('Google Trends response:', response.data);
+
     const trendData = response.data.interest_over_time.timeline_data
       .map((item) => ({
         date: item.date,
@@ -65,6 +74,8 @@ const fetchGoogleTrends = async (keyword, stockSymbol) => {
     throw error;
   }
 };
+
+
 
 const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 
