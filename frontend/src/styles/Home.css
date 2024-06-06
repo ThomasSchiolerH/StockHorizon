@@ -62,15 +62,16 @@
 }
 
 .input__search--variant {
-  width: 35em; /* Adjusted width */
+  width: 40em; /* Maintain width */
   border-radius: 13em;
   outline: none;
   border: none;
-  padding: 0.8em;
+  padding: 4px 10px; /* Adjust padding to fit within 28px height */
   font-size: 1.2em;
   color: #002019; /* Dark text color */
   background-color: transparent;
-  flex-grow: 1;
+  height: 28px; /* Set fixed height */
+  box-sizing: border-box; /* Ensure padding is included in height */
 }
 
 .input__search--variant::placeholder {
@@ -81,11 +82,15 @@
 .input__button__shadow--variant {
   border-radius: 15px;
   background-color: #07372C; /* Dark button color */
-  padding: 10px;
+  padding: 4px 10px; /* Adjust padding to make the button larger */
   border: none;
-  margin-left: 10px;
+  height: 36px; /* Adjust height to make the button larger */
   cursor: pointer;
   transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the button content */
+  margin-left: 10px; /* Adjust margin as needed */
 }
 
 .input__button__shadow--variant:hover {
