@@ -1,4 +1,3 @@
-// src/pages/SignIn.js
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth, provider } from '../firebase';
@@ -36,7 +35,7 @@ const SignIn = () => {
       const user = userCredential.user;
 
       if (!user.emailVerified) {
-        await auth.signOut(); // Sign out immediately to prevent access
+        await auth.signOut();
         setVerificationMessage(`Your email is not verified. Please check your email for a verification link.`);
         return;
       }
@@ -53,7 +52,10 @@ const SignIn = () => {
       {error && <p className="error-message">{error}</p>}
       {verificationMessage && <p className="verification-message">{verificationMessage}</p>}
       <Notice />
-      <button onClick={handleGoogleSignIn}>Sign In with Google</button>
+      <button onClick={handleGoogleSignIn} className="google-button">
+        <img src="/google-logo.png" alt="Google logo" />
+        Sign In with Google
+      </button>
       <form onSubmit={handleEmailSignIn}>
         <input 
           type="email" 

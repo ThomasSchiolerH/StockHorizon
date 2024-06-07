@@ -1,10 +1,9 @@
-// src/pages/SignUp.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, provider } from '../firebase';
 import { signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import '../styles/SignUp.css'; // Import the corresponding CSS file
-import Notice from '../components/Notice'; // Import the Notice component
+import '../styles/SignUp.css';
+import Notice from '../components/Notice';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -37,8 +36,11 @@ const SignUp = () => {
     <div className="signup-page">
       <h1>Sign Up</h1>
       {error && <p className="error-message">{error}</p>}
-      <Notice /> {/* Add the Notice component here */}
-      <button onClick={handleGoogleSignIn}>Sign Up with Google</button>
+      <Notice />
+      <button onClick={handleGoogleSignIn} className="google-button">
+        <img src="/google-logo.png" alt="Google logo" />
+        Sign Up with Google
+      </button>
       <form onSubmit={handleEmailSignUp}>
         <input 
           type="email" 

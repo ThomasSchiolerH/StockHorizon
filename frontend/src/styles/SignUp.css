@@ -1,49 +1,87 @@
 /* src/styles/SignUp.css */
 .signup-page {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .signup-page h1 {
-    text-align: center;
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  input {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .signin-link {
-    margin-top: 20px;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+}
+
+.signup-page h1 {
+  text-align: center;
+  color: #fff;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.google-button img {
+  margin-right: 10px;
+  width: 20px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.google-button:hover {
+  background-color: #e0e0e0;
+}
+
+.signin-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signin-link .button {
+  color: #007bff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.signin-link .button:hover {
+  text-decoration: underline;
+}
