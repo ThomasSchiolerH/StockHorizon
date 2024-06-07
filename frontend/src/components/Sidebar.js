@@ -18,6 +18,15 @@ const Sidebar = () => {
     }
   };
 
+  const handleNavigation = (path) => {
+    if (!currentUser) {
+      alert("Please log in to access this feature."); // replace with your modal logic
+      navigate("/signup");
+    } else {
+      navigate(path);
+    }
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar-icon" onClick={() => navigate("/")}>
@@ -25,8 +34,10 @@ const Sidebar = () => {
       </div>
       <nav className="sidebar-nav">
         <div
-          className={`sidebar-item ${location.pathname === "/trending-stocks" ? "active" : ""}`}
-          onClick={() => navigate("/trending-stocks")}
+          className={`sidebar-item ${
+            location.pathname === "/trending-stocks" ? "active" : ""
+          }`}
+          onClick={() => handleNavigation("/trending-stocks")}
         >
           <div className="icon">
             <svg
@@ -41,8 +52,10 @@ const Sidebar = () => {
           <span className="text">Trending Stocks</span>
         </div>
         <div
-          className={`sidebar-item ${location.pathname === "/search" ? "active" : ""}`}
-          onClick={() => navigate("/search")}
+          className={`sidebar-item ${
+            location.pathname === "/search" ? "active" : ""
+          }`}
+          onClick={() => handleNavigation("/search")}
         >
           <div className="icon">
             <svg
@@ -57,8 +70,10 @@ const Sidebar = () => {
           <span className="text">Search</span>
         </div>
         <div
-          className={`sidebar-item ${location.pathname === "/trending-alerts" ? "active" : ""}`}
-          onClick={() => navigate("/trending-alerts")}
+          className={`sidebar-item ${
+            location.pathname === "/trending-alerts" ? "active" : ""
+          }`}
+          onClick={() => handleNavigation("/trending-alerts")}
         >
           <div className="icon">
             <svg
@@ -73,8 +88,10 @@ const Sidebar = () => {
           <span className="text">Trending Alerts</span>
         </div>
         <div
-          className={`sidebar-item ${location.pathname === "/trending-topics" ? "active" : ""}`}
-          onClick={() => navigate("/trending-topics")}
+          className={`sidebar-item ${
+            location.pathname === "/trending-topics" ? "active" : ""
+          }`}
+          onClick={() => handleNavigation("/trending-topics")}
         >
           <div className="icon">
             <svg
@@ -91,8 +108,10 @@ const Sidebar = () => {
           <span className="text">Trending Topics</span>
         </div>
         <div
-          className={`sidebar-item ${location.pathname === "/dashboard" ? "active" : ""}`}
-          onClick={() => navigate("/dashboard")}
+          className={`sidebar-item ${
+            location.pathname === "/dashboard" ? "active" : ""
+          }`}
+          onClick={() => handleNavigation("/dashboard")}
         >
           <div className="icon">
             <svg
@@ -109,7 +128,12 @@ const Sidebar = () => {
       </nav>
       <div className="sidebar-footer">
         {currentUser ? (
-          <div className={`sidebar-item ${location.pathname === "/logout" ? "active" : ""}`} onClick={handleLogout}>
+          <div
+            className={`sidebar-item ${
+              location.pathname === "/logout" ? "active" : ""
+            }`}
+            onClick={handleLogout}
+          >
             <div className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +148,12 @@ const Sidebar = () => {
             <span className="text">Logout</span>
           </div>
         ) : (
-          <div className={`sidebar-item ${location.pathname === "/signup" ? "active" : ""}`} onClick={() => navigate("/signup")}>
+          <div
+            className={`sidebar-item ${
+              location.pathname === "/signup" ? "active" : ""
+            }`}
+            onClick={() => navigate("/signup")}
+          >
             <div className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

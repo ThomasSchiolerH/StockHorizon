@@ -1,0 +1,89 @@
+/* src/styles/StockList.css */
+
+.table-container {
+  overflow-x: auto;
+  padding: 0 6rem; /* Increase space between the table and the sides of the screen */
+}
+
+.stock-list {
+  width: 100%;
+  border-collapse: collapse; /* Ensure borders are collapsed to avoid double lines */
+  color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Match the background color */
+}
+
+.stock-list th,
+.stock-list td {
+  padding: 8px; /* Adjust padding to make rows less tall */
+  text-align: left;
+  border-bottom: 1px solid #444; /* Only horizontal borders */
+  font-size: 0.85em; /* Make text smaller */
+}
+
+.stock-list th {
+  background-color: #121212; /* Match the background color */
+  text-transform: uppercase;
+  font-size: 0.75em; /* Make header text slightly smaller */
+  color: #bbb;
+  border-bottom: 1px solid #444; /* Only horizontal borders */
+}
+
+.stock-list tr:hover {
+  background-color: #333;
+}
+
+.stock-list .name-cell {
+  display: flex;
+  align-items: center;
+  width: 24%; /* Adjust width to accommodate longer company names */
+  padding: 8px; /* Ensure consistent padding */
+  border-bottom: 1px solid #444; /* Ensure horizontal borders for name cells */
+}
+
+.stock-list .name-cell img {
+  margin-right: 10px;
+  width: 24px; /* Reduce image size */
+  height: 24px; /* Reduce image size */
+  border-radius: 50%;
+}
+
+.stock-list .stock-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.stock-list .stock-symbol {
+  font-weight: bold;
+  font-size: 0.85em; /* Make text smaller */
+}
+
+.stock-list .stock-full-name {
+  font-size: 0.75em; /* Make text smaller */
+  color: #bbb;
+}
+
+.stock-list .sector-cell,
+.stock-list .market-cap-cell,
+.stock-list .mentions-cell,
+.stock-list .sentiment-cell,
+.stock-list .actions-cell {
+  width: 12%; /* Ensure all other columns are the same width */
+  white-space: nowrap; /* Ensure the text does not wrap */
+  padding: 8px; /* Ensure consistent padding */
+  border-bottom: 1px solid #444; /* Ensure horizontal borders for other cells */
+}
+
+.stock-list .alert-button {
+  background-color: #333;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 5px 8px; /* Reduce padding to make buttons smaller */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75em; /* Make button text smaller */
+}
+
+.stock-list .alert-button:hover {
+  background-color: #555;
+}

@@ -1,0 +1,18 @@
+/* src/styles/TrendingStocks.css */
+
+.trending-stocks-page {
+  padding: 20px;
+  background-color: #121212;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.trending-stocks-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.table-container {
+  overflow-x: auto;
+}

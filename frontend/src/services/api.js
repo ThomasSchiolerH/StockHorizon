@@ -9,3 +9,7 @@ export const searchStocks = async (query) => {
 export const fetchNews = async (symbol) => {
   return await axios.get(`${API_URL}/news?symbol=${symbol}`);
 };
+
+export const fetchTrendingStocks = async () => {
+  return await axios.get(`${API_URL}/trends/trending-overview`);
+};

@@ -10,14 +10,12 @@ const HandleRedirect = () => {
   useEffect(() => {
     getRedirectResult(auth)
       .then((result) => {
-        if (result.user) {
-          // User signed in successfully
+        if (result?.user) {
           navigate('/');
         }
       })
       .catch((error) => {
-        // Handle Errors here.
-        console.error(error);
+        console.error('Error handling redirect:', error.message);
       });
   }, [navigate]);
 
