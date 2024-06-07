@@ -7,7 +7,8 @@
     --light-green: #58A775;
     --medium-light-green: #459261;
     --medium-dark-green: #397E53;
-    --theme-colour: ;
+    --theme-colour-text: #5272ff;
+    --theme-colour-background: #27305298;
 }
 
 body, html {
