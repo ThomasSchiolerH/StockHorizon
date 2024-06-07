@@ -30,49 +30,68 @@ const SignIn = () => {
 
   const handleEmailSignIn = async (e) => {
     e.preventDefault();
+    setError(''); // Clear previous errors
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-
+  
       if (!user.emailVerified) {
         await auth.signOut();
         setVerificationMessage(`Your email is not verified. Please check your email for a verification link.`);
         return;
       }
-
+  
       navigate('/');
     } catch (error) {
-      setError(error.message);
+      switch (error.code) {
+        case 'auth/invalid-credential':
+          setError('No user found with this email. Please sign up first.');
+          break;
+        case 'auth/wrong-password':
+          setError('Incorrect password. Please try again.');
+          break;
+        case 'auth/invalid-email':
+          setError('The email address is not valid. Please enter a valid email.');
+          break;
+        default:
+          setError('An error occurred. Please try again.');
+          break;
+      }
     }
-  };
+  };  
 
   return (
-    <div className="signin-page">
-      <h1>Sign In</h1>
-      {error && <p className="error-message">{error}</p>}
-      {verificationMessage && <p className="verification-message">{verificationMessage}</p>}
-      <Notice />
-      <button onClick={handleGoogleSignIn} className="google-button">
-        <img src="/google-logo.png" alt="Google logo" />
-        Sign In with Google
-      </button>
-      <form onSubmit={handleEmailSignIn}>
-        <input 
-          type="email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          placeholder="Email" 
-          required 
-        />
-        <input 
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          placeholder="Password" 
-          required 
-        />
-        <button type="submit">Sign In with Email</button>
-      </form>
+    <div className="page-container">
+      <div className="signin-page">
+        <h1>Sign In</h1>
+        {error && <p className="error-message">{error}</p>}
+        {verificationMessage && <p className="verification-message">{verificationMessage}</p>}
+        {/* <Notice /> */}
+        <div className="google-button-container">
+          <button onClick={handleGoogleSignIn} className="google-button">
+            <img src="/google-logo.png" alt="Google logo" />
+            Continue with Google
+          </button>
+        </div>
+        <div className="or-separator">OR</div>
+        <form onSubmit={handleEmailSignIn}>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            placeholder="Email" 
+            required 
+          />
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            placeholder="Password" 
+            required 
+          />
+          <button type="submit">Sign In with Email</button>
+        </form>
+      </div>
     </div>
   );
 };

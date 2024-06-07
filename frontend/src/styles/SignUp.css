@@ -1,12 +1,46 @@
 /* src/styles/SignUp.css */
-.signup-page {
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Change this to vh to cover the full viewport height */
+  background-color: #0d0d0d; /* Adjust the background color as needed */
+}
+
+/* .signup-page {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #333;
-  border-radius: 5px;
-  background-color: #222;
+  border-radius: 10px;
+  background-color: #0d0d0f;
   color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
+
+.signup-page {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 1.5em; /* Rounded corners */
+  background-color: #0d0d0f; /* Dark background */
+  color: #fff;
+  box-shadow: 0em 1em 3em #beecdc64; /* Darker shadow */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Add this line to include a border */
+  position: relative;
+}
+
+.signup-page::before {
+  content: '';
+  filter: blur(25px);
+  border-radius: 1.5em;
+  background-color: #0d0d0f; /* Same dark background */
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 .signup-page h1 {
@@ -27,9 +61,9 @@ form {
 input {
   margin: 10px 0;
   padding: 10px;
-  border: 1px solid #333;
+  border: 1px solid #0f3460;
   border-radius: 5px;
-  background-color: #444;
+  background-color: #060810;
   color: #fff;
 }
 
@@ -47,14 +81,19 @@ button:hover {
   background-color: #0056b3;
 }
 
+.google-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
 .google-button {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 50px;
   background-color: #fff;
   color: #000;
   cursor: pointer;
@@ -84,4 +123,26 @@ button:hover {
 
 .signin-link .button:hover {
   text-decoration: underline;
+}
+
+.or-separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.or-separator::before,
+.or-separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.or-separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.or-separator:not(:empty)::after {
+  margin-left: .25em;
 }
