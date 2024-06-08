@@ -1,14 +1,20 @@
+// src/pages/Home.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import useTypingEffect from '../hooks/useTypingEffect';
 import '../styles/Home.css'; // Import the corresponding CSS file
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchCount, setSearchCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+
+  const stockSymbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "TSLA"];
+  const placeholderText = useTypingEffect(stockSymbols, 150, 100, 3000, 1000);
 
   useEffect(() => {
     const count = localStorage.getItem('searchCount');
@@ -19,7 +25,7 @@ const Home = () => {
 
   const handleSearch = () => {
     if (!currentUser && searchCount >= 1) {
-      setShowModal(true);
+      navigate('/signup', { state: { message: "Please log in to access the search feature." } });
     } else {
       if (!currentUser) {
         setSearchCount(searchCount + 1);
@@ -46,8 +52,10 @@ const Home = () => {
           type="text" 
           value={searchQuery} 
           onChange={(e) => setSearchQuery(e.target.value)} 
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           className="input__search input__search--variant" 
-          placeholder="Search for a stock..." 
+          placeholder={isFocused ? '' : placeholderText} 
         />
         <button className="input__button__shadow input__button__shadow--variant" onClick={handleSearch}>
           <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" height="1.5em" width="1.5em">
