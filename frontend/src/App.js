@@ -24,13 +24,13 @@ const App = () => {
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
             <Route path="/trending-stocks" element={<PrivateRoute element={TrendingStocks} />} />
             <Route path="/search" element={<PrivateRoute element={Search} />} />
             <Route path="/trending-alerts" element={<PrivateRoute element={TrendingAlerts} />} />
             <Route path="/trending-topics" element={<PrivateRoute element={TrendingTopics} />} />
             <Route path="/dashboard" element={<PrivateRoute element={Dashboard} />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
           </Routes>
         </div>
       </Router>

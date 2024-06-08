@@ -9,14 +9,13 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user && user.emailVerified) {
-        setCurrentUser(user);
-      } else {
-        setCurrentUser(null);
-      }
+      console.log('Auth state changed: ', user);
+      setCurrentUser(user);
+      setLoading(false);
     });
 
     return unsubscribe;
@@ -27,8 +26,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ currentUser, logout }}>
-      {children}
+    <AuthContext.Provider value={{ currentUser, logout, loading }}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

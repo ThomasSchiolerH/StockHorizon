@@ -10,13 +10,28 @@ const TrendingStocks = () => {
 
   useEffect(() => {
     const loadTrendingStocks = async () => {
-      try {
-        const response = await fetchTrendingStocks();
-        setStocks(response.data);
+      const cachedData = localStorage.getItem('trendingStocks');
+      const cachedTime = localStorage.getItem('trendingStocksTime');
+      const oneHour = 60 * 60 * 1000;
+
+      if (cachedData && cachedTime && (new Date().getTime() - cachedTime) < oneHour) {
+        setStocks(JSON.parse(cachedData));
         setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+      } else {
+        try {
+          const response = await fetchTrendingStocks();
+          if (response.status === 200) {
+            setStocks(response.data);
+            localStorage.setItem('trendingStocks', JSON.stringify(response.data));
+            localStorage.setItem('trendingStocksTime', new Date().getTime());
+          } else {
+            setError('Failed to fetch trending stocks');
+          }
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
       }
     };
     loadTrendingStocks();
