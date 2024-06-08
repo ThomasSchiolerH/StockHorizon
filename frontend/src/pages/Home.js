@@ -13,7 +13,7 @@ const Home = () => {
   const navigate = useNavigate();
   const { currentUser } = useAuth();
 
-  const stockSymbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "TSLA"];
+  const stockSymbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "TSLA", "META", "NFLX", "NVDA", "BABA"];
   const placeholderText = useTypingEffect(stockSymbols, 150, 100, 3000, 1000);
 
   useEffect(() => {
