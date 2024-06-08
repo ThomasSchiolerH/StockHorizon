@@ -14,7 +14,16 @@ import {
 
 const StockTable = ({ stocks }) => {
   return (
-    <TableContainer component={Paper} sx={{ backgroundColor: 'var(--background)', width: '100%', overflowX: 'hidden' }}>
+    <TableContainer 
+      component={Paper} 
+      sx={{ 
+        backgroundColor: 'var(--background)', 
+        width: 'calc(100% - 90px)', // Adjust the width calculation to add padding
+        marginLeft: '45px', // Add left margin
+        marginRight: '45px', // Add right margin
+        overflowX: 'hidden' 
+      }}
+    >
       <Table sx={{ minWidth: 650, width: '100%', color: '#fff' }} aria-label="simple table">
         <TableHead sx={{ backgroundColor: 'var(--background)' }}>
           <TableRow sx={{ borderTop: '1px solid rgba(68, 68, 68, 0.5)' }}>
