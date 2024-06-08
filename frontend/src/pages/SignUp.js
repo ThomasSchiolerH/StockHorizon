@@ -84,7 +84,7 @@ const SignUp = () => {
             placeholder="Password" 
             required 
           />
-          <button type="submit">Sign Up with Email</button>
+          <button type="submit" className="email-signup-button">Sign Up with Email</button>
         </form>
         <p className="signin-link">
           Already have an account? <button onClick={() => navigate('/signin')} className="button">Sign In</button>

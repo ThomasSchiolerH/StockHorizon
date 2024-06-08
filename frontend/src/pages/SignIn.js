@@ -89,7 +89,7 @@ const SignIn = () => {
             placeholder="Password" 
             required 
           />
-          <button type="submit">Sign In with Email</button>
+          <button type="submit" className="email-signin-button">Sign In with Email</button>
         </form>
       </div>
     </div>
