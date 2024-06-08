@@ -14,7 +14,7 @@
   border-radius: 1.5em; /* Rounded corners */
   background-color: #0d0d0f; /* Dark background */
   color: #fff;
-  box-shadow: 0em 1em 3em #beecdc64; /* Darker shadow */
+  box-shadow: 0em 1em 3em #bec2ec64; /* Darker shadow */
   border: 1px solid rgba(255, 255, 255, 0.2); /* Add this line to include a border */
   position: relative;
 }
@@ -107,8 +107,8 @@ button:hover {
 }
 
 .google-font {
-  font-size: 16px; /* Change to your preferred size */
-  font-weight: bold; /* Optional: adjust the font weight */
+  font-size: 16px; 
+  font-weight: bold; 
 }
 
 .signin-link {

@@ -68,7 +68,7 @@ const SignIn = () => {
         {verificationMessage && <p className="verification-message">{verificationMessage}</p>}
         {/* <Notice /> */}
         <div className="google-button-container">
-          <button onClick={handleGoogleSignIn} className="google-button">
+          <button onClick={handleGoogleSignIn} className="google-button google-font">
             <img src="/google-logo.png" alt="Google logo" />
             Continue with Google
           </button>

@@ -7,15 +7,6 @@
   background-color: #0d0d0d; /* Adjust the background color as needed */
 }
 
-/* .signin-page {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #0d0d0f;
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-} */
 .signin-page {
   max-width: 400px;
   width: 100%;
@@ -23,7 +14,7 @@
   border-radius: 1.5em; /* Rounded corners */
   background-color: #0d0d0f; /* Dark background */
   color: #fff;
-  box-shadow: 0em 1em 3em #beecdc64; /* Darker shadow */
+  box-shadow: 0em 1em 3em #bec2ec64; /* Darker shadow */
   border: 1px solid rgba(255, 255, 255, 0.2); /* Add this line to include a border */
   position: relative;
 }
@@ -106,6 +97,11 @@ button:hover {
 
 .google-button:hover {
   background-color: #e0e0e0;
+}
+
+.google-font {
+  font-size: 16px; 
+  font-weight: bold; 
 }
 
 .verification-message {
