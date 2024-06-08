@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import HandleRedirect from './components/HandleRedirect';
 import { AuthProvider } from './contexts/AuthContext';
 import Sidebar from './components/Sidebar';
+import PrivateRoute from './components/PrivateRoute';
 import './styles/App.css';
 
 const App = () => {
@@ -23,11 +24,11 @@ const App = () => {
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/trending-stocks" element={<TrendingStocks />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/trending-alerts" element={<TrendingAlerts />} />
-            <Route path="/trending-topics" element={<TrendingTopics />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/trending-stocks" element={<PrivateRoute element={TrendingStocks} />} />
+            <Route path="/search" element={<PrivateRoute element={Search} />} />
+            <Route path="/trending-alerts" element={<PrivateRoute element={TrendingAlerts} />} />
+            <Route path="/trending-topics" element={<PrivateRoute element={TrendingTopics} />} />
+            <Route path="/dashboard" element={<PrivateRoute element={Dashboard} />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
           </Routes>

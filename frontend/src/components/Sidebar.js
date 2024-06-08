@@ -2,7 +2,7 @@
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
-import "../styles/Sidebar.css"; // Make sure to create this CSS file
+import "../styles/Sidebar.css";
 
 const Sidebar = () => {
   const { currentUser, logout } = useAuth();
@@ -20,8 +20,7 @@ const Sidebar = () => {
 
   const handleNavigation = (path) => {
     if (!currentUser) {
-      alert("Please log in to access this feature."); // replace with your modal logic
-      navigate("/signup");
+      navigate("/signup", { state: { message: "Please log in to access this feature." } });
     } else {
       navigate(path);
     }

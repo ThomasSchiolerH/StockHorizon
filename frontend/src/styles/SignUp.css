@@ -7,16 +7,6 @@
   background-color: #0d0d0d; /* Adjust the background color as needed */
 }
 
-/* .signup-page {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #0d0d0f;
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-} */
-
 .signup-page {
   max-width: 400px;
   width: 100%;
@@ -51,6 +41,13 @@
 .error-message {
   color: red;
   text-align: center;
+}
+
+.info-message {
+  color: #007bff;
+  text-align: center;
+  font-size: 16px; /* Change to your preferred size */
+  font-weight: bold; /* Optional: adjust the font weight */
 }
 
 form {
@@ -107,6 +104,11 @@ button:hover {
 
 .google-button:hover {
   background-color: #e0e0e0;
+}
+
+.google-font {
+  font-size: 16px; /* Change to your preferred size */
+  font-weight: bold; /* Optional: adjust the font weight */
 }
 
 .signin-link {

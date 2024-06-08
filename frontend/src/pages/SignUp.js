@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// src/pages/SignUp.js
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { auth, provider } from '../firebase';
 import { signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import '../styles/SignUp.css';
@@ -9,7 +10,15 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state && location.state.message) {
+      setMessage(location.state.message);
+    }
+  }, [location]);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -45,16 +54,16 @@ const SignUp = () => {
       }
     }
   };
-  
 
   return (
     <div className="page-container">
       <div className="signup-page">
         <h1>Sign Up</h1>
+        {message && <p className="info-message">{message}</p>}
         {error && <p className="error-message">{error}</p>}
         {/* <Notice /> */}
         <div className="google-button-container">
-          <button onClick={handleGoogleSignIn} className="google-button">
+          <button onClick={handleGoogleSignIn} className="google-button google-font">
             <img src="/google-logo.png" alt="Google logo" />
             Continue with Google
           </button>
