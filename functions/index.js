@@ -12,8 +12,8 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(
     cors({
-      // origin: "http://localhost:3001" 
-      origin: "https://stockhorizon-frontend.vercel.app" 
+      origin: ["http://localhost:3001", "https://stockhorizon-frontend.vercel.app"],
+      credentials: true,
     })
 );
 app.use(express.json());
