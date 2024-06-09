@@ -12,11 +12,12 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(
     cors({
-      origin: "http://localhost:3001",
+      // origin: "http://localhost:3001" 
+      origin: "https://stockhorizon-frontend.vercel.app" 
     })
-  );
+);
 app.use(express.json());
-app.use('/api/trends', trendsRouter); //http://localhost:3000/api/trends/trending
+app.use('/api/trends', trendsRouter);
 app.use('/api/', searchRouter);
 
 // MongoDB Connection
@@ -29,10 +30,10 @@ mongoose.connect(process.env.MONGODB_URI)
   });
 
 // Basic Route
-// app.get('/', (req, res) => {
-//   res.send('Trending Stocks Backend');
-// });
+app.get('/', (req, res) => {
+  res.send('Trending Stocks Backend');
+});
 
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });
