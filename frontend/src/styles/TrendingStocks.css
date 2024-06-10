@@ -21,6 +21,25 @@ html, body {
   color: #fff;
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Center vertically */
+  text-align: center;
+}
+
+.loading-container h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.loading-container p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
 .table-container {
   overflow-x: auto;
 }

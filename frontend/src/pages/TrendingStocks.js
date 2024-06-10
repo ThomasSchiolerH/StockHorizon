@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import StockTable from '../components/StockTable';
 import { fetchTrendingStocks } from '../services/api';
 import '../styles/TrendingStocks.css';
+import ProgressBar from '../components/ProgressBar';
 
 const TrendingStocks = () => {
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0); // Add state for loading progress
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -19,6 +21,16 @@ const TrendingStocks = () => {
         setLoading(false);
       } else {
         try {
+          // Simulate loading progress
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += 10;
+            if (progress >= 100) {
+              clearInterval(interval);
+            }
+            setLoadingProgress(progress);
+          }, 100);
+
           const response = await fetchTrendingStocks();
           if (response.status === 200) {
             setStocks(response.data);
@@ -39,12 +51,24 @@ const TrendingStocks = () => {
 
   return (
     <div className="trending-stocks-page">
-      <h1>Trending Stocks</h1>
-      <div className="table-container">
-        {loading && <p>Loading...</p>}
-        {error && <p>Error loading trending stocks: {error}</p>}
-        {!loading && !error && <StockTable stocks={stocks} />}
-      </div>
+      {loading ? (
+        <div className="loading-container">
+          <h1>We're crunching the numbers!</h1>
+          <p>Please be patient as this may take a few seconds.</p>
+          <ProgressBar progress={loadingProgress} />
+        </div>
+      ) : (
+        <>
+          <h1>Trending Stocks</h1>
+          <div className="table-container">
+            {error ? (
+              <p>Error loading trending stocks: {error}</p>
+            ) : (
+              <StockTable stocks={stocks} />
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };

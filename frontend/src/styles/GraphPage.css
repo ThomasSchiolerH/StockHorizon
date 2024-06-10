@@ -1,25 +1,57 @@
 .graph-page {
-    padding: 20px;
-  }
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white; /* Set the text color to white */
+  text-align: center; /* Center align the text */
+}
+
+.stock-symbol {
+  color: var(--light-green); /* Set the color of the stock symbol */
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Center vertically */
+  text-align: center;
+}
+
+.loading-container h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.loading-container p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
   
-  .chart-container {
-    margin-top: 20px;
-  }
-  
-  .news-button-container {
-    margin-top: 20px;
-  }
-  
-  .news-button-container button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .news-button-container button:hover {
-    background-color: #0056b3;
-  }
-  
+.chart-container {
+  margin-top: 20px;
+  padding-left: 20px; /* Add padding on the left */
+  padding-right: 20px; /* Add padding on the right */
+  width: 100%; /* Ensure the chart container takes the full width */
+  max-width: 800px; /* Optionally, set a max width */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.news-button-container {
+  margin-top: 20px;
+}
+
+.news-button-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.news-button-container button:hover {
+  background-color: #0056b3;
+}
