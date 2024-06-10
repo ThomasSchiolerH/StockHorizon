@@ -136,28 +136,16 @@
   text-align: center;
 }
 
+/* src/styles/Home.css */
+
 /* Media Queries for Responsive Design */
 
 /* For tablets and below */
 @media only screen and (max-width: 768px) {
-  .home-page {
-    padding: 20px;
-    padding-top: 100px;
-  }
-
-  .home-page .title {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-  }
-
-  .home-page .subtitle {
-    font-size: 1em;
-    margin-bottom: 30px;
-  }
-
   .input__container--variant {
-    max-width: 90%;
+    width: 90%;
     padding: 0.5em;
+    box-shadow: 0em 0.5em 1.5em #beecdc64;
   }
 
   .input__search--variant {
@@ -165,31 +153,21 @@
   }
 
   .input__button__shadow--variant {
-    padding: 2px 5px;
     height: 28px;
+    padding: 2px 5px;
+  }
+
+  .home-page {
+    padding-top: 120px;
   }
 }
 
 /* For mobile phones */
 @media only screen and (max-width: 480px) {
-  .home-page {
-    padding: 10px;
-    padding-top: 80px;
-  }
-
-  .home-page .title {
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-
-  .home-page .subtitle {
-    font-size: 0.8em;
-    margin-bottom: 20px;
-  }
-
   .input__container--variant {
-    max-width: 100%;
+    width: 90%;
     padding: 0.5em;
+    box-shadow: 0em 0.5em 1.5em #beecdc64;
   }
 
   .input__search--variant {
@@ -197,7 +175,11 @@
   }
 
   .input__button__shadow--variant {
-    padding: 2px 5px;
     height: 24px;
+    padding: 2px 5px;
+  }
+
+  .home-page {
+    padding-top: 100px;
   }
 }
