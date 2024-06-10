@@ -13,6 +13,7 @@ import HandleRedirect from './components/HandleRedirect';
 import { AuthProvider } from './contexts/AuthContext';
 import Sidebar from './components/Sidebar';
 import PrivateRoute from './components/PrivateRoute';
+import GraphPage from './pages/GraphPage'; 
 import './styles/App.css';
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/trending-alerts" element={<PrivateRoute element={TrendingAlerts} />} />
             <Route path="/trending-topics" element={<PrivateRoute element={TrendingTopics} />} />
             <Route path="/dashboard" element={<PrivateRoute element={Dashboard} />} />
+            <Route path="/graph/:symbol" element={<GraphPage />} /> 
           </Routes>
         </div>
       </Router>

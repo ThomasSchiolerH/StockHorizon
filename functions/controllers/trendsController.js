@@ -21,7 +21,19 @@ const getTrendingStocks = async (req, res) => {
     const stockSymbol = req.query.symbol || "AAPL";
 
     // Fetch Google Trends data
-    const googleTrends = await fetchGoogleTrends(keyword, stockSymbol);
+    let googleTrends = await fetchGoogleTrends(keyword, stockSymbol);
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Check if the last data point includes the current date and remove it if necessary
+    if (googleTrends.length > 0) {
+      const lastDataPoint = googleTrends[googleTrends.length - 1];
+      const daysInterval = (googleTrends[googleTrends.length - 1].date - googleTrends[googleTrends.length - 2].date) / (1000 * 3600 * 24);
+      if ((currentDate - lastDataPoint.date) / (1000 * 3600 * 24) < daysInterval) {
+        googleTrends.pop();
+      }
+    }
 
     // Fetch the latest trends from the database
     const trends = await Trend.find({ keyword, stockSymbol }).sort({
