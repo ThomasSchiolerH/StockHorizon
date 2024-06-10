@@ -59,7 +59,7 @@ const TrendingStocks = () => {
         </div>
       ) : (
         <>
-          <h1>Trending Stocks</h1>
+          <h1>Trending <span className="stocks-text">Stocks</span></h1>
           <div className="table-container">
             {error ? (
               <p>Error loading trending stocks: {error}</p>

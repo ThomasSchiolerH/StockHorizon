@@ -14,3 +14,20 @@
     transition: width 0.25s;
   }
   
+  /* Media Queries for Responsive Design */
+
+/* For tablets and below */
+@media only screen and (max-width: 768px) {
+    .progress-bar {
+      height: 18px; /* Slightly reduce the height */
+    }
+  }
+  
+  /* For mobile phones */
+  @media only screen and (max-width: 480px) {
+    .progress-bar {
+      height: 16px; /* Further reduce the height */
+      margin: 15px 0; /* Adjust margin for smaller screens */
+    }
+  }
+  

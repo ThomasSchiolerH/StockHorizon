@@ -148,3 +148,55 @@ input {
 .or-separator:not(:empty)::after {
   margin-left: .25em;
 }
+
+/* Media Queries for Responsive Design */
+
+/* For tablets and below */
+@media only screen and (max-width: 768px) {
+  .signin-page {
+    padding: 15px;
+    max-width: 90%; /* Adjust width to fit the screen */
+  }
+
+  input {
+    padding: 8px;
+  }
+
+  .email-signin-button {
+    padding: 8px;
+    font-size: 16px; /* Adjust font size */
+  }
+
+  .google-button {
+    padding: 8px;
+  }
+
+  .google-font {
+    font-size: 14px; /* Adjust font size */
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 480px) {
+  .signin-page {
+    padding: 10px;
+    max-width: 100%; /* Use full width */
+  }
+
+  input {
+    padding: 6px;
+  }
+
+  .email-signin-button {
+    padding: 6px;
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .google-button {
+    padding: 6px;
+  }
+
+  .google-font {
+    font-size: 12px; /* Adjust font size */
+  }
+}

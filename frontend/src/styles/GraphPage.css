@@ -55,3 +55,56 @@
 .news-button-container button:hover {
   background-color: #0056b3;
 }
+
+/* Media Queries for Responsive Design */
+
+/* For tablets and below */
+@media only screen and (max-width: 768px) {
+  .graph-page {
+    padding: 15px;
+  }
+
+  .loading-container h1 {
+    font-size: 1.5em;
+  }
+
+  .loading-container p {
+    font-size: 1em;
+  }
+
+  .chart-container {
+    padding-left: 10px; /* Reduce padding on the left */
+    padding-right: 10px; /* Reduce padding on the right */
+    max-width: 100%; /* Allow full width for smaller screens */
+  }
+
+  .news-button-container button {
+    padding: 8px 16px;
+    font-size: 0.9em; /* Adjust button font size */
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 480px) {
+  .graph-page {
+    padding: 10px;
+  }
+
+  .loading-container h1 {
+    font-size: 1.2em;
+  }
+
+  .loading-container p {
+    font-size: 0.9em;
+  }
+
+  .chart-container {
+    padding-left: 5px; /* Further reduce padding on the left */
+    padding-right: 5px; /* Further reduce padding on the right */
+  }
+
+  .news-button-container button {
+    padding: 6px 12px;
+    font-size: 0.8em; /* Further adjust button font size */
+  }
+}

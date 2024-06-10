@@ -13,6 +13,11 @@ html, body {
   color: #fff;
   min-height: 100vh;
   box-sizing: border-box;
+  text-align: center; /* Center align the text */
+}
+
+.stocks-text {
+  color: var(--light-green);
 }
 
 .trending-stocks-page h1 {
@@ -42,4 +47,54 @@ html, body {
 
 .table-container {
   overflow-x: auto;
+}
+
+/* For tablets and below */
+@media only screen and (max-width: 768px) {
+  .trending-stocks-page {
+    padding: 15px;
+  }
+
+  .trending-stocks-page h1 {
+    font-size: 1.5em;
+  }
+
+  .loading-container h1 {
+    font-size: 1.5em;
+  }
+
+  .loading-container p {
+    font-size: 1em;
+  }
+
+  .table-container {
+    padding: 0 10px;
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 480px) {
+  .trending-stocks-page {
+    padding: 10px;
+  }
+
+  .trending-stocks-page h1 {
+    font-size: 1.2em;
+  }
+
+  .trending-stocks-page .stocks-text {
+    font-size: 1.2em;
+  }
+
+  .loading-container h1 {
+    font-size: 1.2em;
+  }
+
+  .loading-container p {
+    font-size: 0.9em;
+  }
+
+  .table-container {
+    padding: 0 5px;
+  }
 }

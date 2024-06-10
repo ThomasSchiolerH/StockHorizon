@@ -135,3 +135,69 @@
   border-radius: 5px;
   text-align: center;
 }
+
+/* Media Queries for Responsive Design */
+
+/* For tablets and below */
+@media only screen and (max-width: 768px) {
+  .home-page {
+    padding: 20px;
+    padding-top: 100px;
+  }
+
+  .home-page .title {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+
+  .home-page .subtitle {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+
+  .input__container--variant {
+    max-width: 90%;
+    padding: 0.5em;
+  }
+
+  .input__search--variant {
+    font-size: 1em;
+  }
+
+  .input__button__shadow--variant {
+    padding: 2px 5px;
+    height: 28px;
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 480px) {
+  .home-page {
+    padding: 10px;
+    padding-top: 80px;
+  }
+
+  .home-page .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .home-page .subtitle {
+    font-size: 0.8em;
+    margin-bottom: 20px;
+  }
+
+  .input__container--variant {
+    max-width: 100%;
+    padding: 0.5em;
+  }
+
+  .input__search--variant {
+    font-size: 0.9em;
+  }
+
+  .input__button__shadow--variant {
+    padding: 2px 5px;
+    height: 24px;
+  }
+}

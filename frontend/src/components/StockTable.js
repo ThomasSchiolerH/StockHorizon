@@ -21,7 +21,7 @@ const StockTable = ({ stocks }) => {
         width: 'calc(100% - 90px)', // Adjust the width calculation to add padding
         marginLeft: '45px', // Add left margin
         marginRight: '45px', // Add right margin
-        overflowX: 'hidden' 
+        overflowX: 'auto' // Allow horizontal scrolling for smaller screens
       }}
     >
       <Table sx={{ minWidth: 650, width: '100%', color: '#fff' }} aria-label="simple table">

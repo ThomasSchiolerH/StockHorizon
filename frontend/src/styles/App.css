@@ -103,3 +103,27 @@ code {
 .sidebar:hover ~ .main-content {
   margin-left: 200px; /* Adjust this margin to match the width of your expanded sidebar */
 }
+
+/* Media Queries for Responsive Design */
+
+/* For tablets and below */
+@media only screen and (max-width: 768px) {
+  .main-content {
+    margin-left: 50px; /* Match the sidebar width */
+  }
+
+  .sidebar:hover ~ .main-content {
+    margin-left: 150px; /* Adjust this margin to match the width of the sidebar when expanded */
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 480px) {
+  .main-content {
+    margin-left: 40px; /* Match the sidebar width */
+  }
+
+  .sidebar:hover ~ .main-content {
+    margin-left: 120px; /* Adjust this margin to match the width of the sidebar when expanded */
+  }
+}

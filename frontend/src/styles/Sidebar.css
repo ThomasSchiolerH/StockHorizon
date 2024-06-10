@@ -115,3 +115,32 @@
 .sidebar:hover ~ .main-content {
   margin-left: 200px;
 }
+
+/* For mobile phones */
+@media only screen and (max-width: 480px) {
+  .sidebar {
+    width: 40px;
+  }
+
+  .sidebar:hover {
+    width: 120px;
+  }
+
+  .sidebar-item {
+    height: 40px;
+  }
+
+  .sidebar-item::before {
+    left: 3px;
+    right: 3px;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .text {
+    font-size: 0.8em;
+  }
+}
