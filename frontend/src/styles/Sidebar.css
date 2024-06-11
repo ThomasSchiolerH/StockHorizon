@@ -12,6 +12,7 @@
   top: 0;
   left: 0;
   padding-top: 20px;
+  z-index: 1000;
 }
 
 .sidebar:hover {
@@ -46,7 +47,7 @@
   margin-bottom: 10px;
   position: relative;
   z-index: 1;
-  background-color: transparent; /* Ensure no background color */
+  background-color: transparent;
 }
 
 .sidebar-item::before {
@@ -56,7 +57,7 @@
   bottom: 2px;
   left: 6px;
   right: 6px;
-  background-color: #27305298; /* Blue highlight */
+  background-color: #27305298;
   border-radius: 4px;
   opacity: 0;
   transition: opacity 0.3s;
@@ -70,17 +71,17 @@
 
 .sidebar-item:hover,
 .sidebar-item.active {
-  background-color: transparent !important; /* Ensure no background color */
+  background-color: transparent !important;
 }
 
 .sidebar-item:hover .icon,
 .sidebar-item.active .icon {
-  fill: #5272ff; /* Change icon color when hovered or active */
+  fill: #5272ff;
 }
 
 .sidebar-item:hover .text,
 .sidebar-item.active .text {
-  color: #5272ff; /* Change text color when hovered or active */
+  color: #5272ff;
 }
 
 .icon {
@@ -116,9 +117,7 @@
   margin-left: 200px;
 }
 
-/* src/styles/Sidebar.css */
-
-/* Media Queries for Responsive Design */
+/* Responsive Design */
 
 /* For tablets and below */
 @media only screen and (max-width: 768px) {
@@ -135,7 +134,7 @@
     bottom: 0;
     left: 0;
     z-index: 1000;
-    transition: none; /* Disable transition on hover */
+    transition: none;
   }
 
   .sidebar-item {
@@ -151,15 +150,15 @@
   }
 
   .text {
-    display: none; /* Hide text to fit icons in the bottom bar */
+    display: none;
   }
 
   .sidebar-footer {
-    display: none; /* Hide footer in this layout */
+    display: none;
   }
 
   .sidebar:hover {
-    width: 100%; /* No width change on hover */
+    width: 100%;
   }
 }
 

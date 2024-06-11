@@ -1,21 +1,21 @@
 :root {
-    --background: #151515;
-    --side-bar: #000000;
-    --strong-red: #B83B2C;
-    --subtle-red: #C6584C;
-    --dark-green: #2C6340;
-    --light-green: #58A775;
-    --medium-light-green: #459261;
-    --medium-dark-green: #397E53;
-    --theme-colour-text: #5272ff;
-    --theme-colour-background: #27305298;
+  --background: #151515;
+  --side-bar: #000000;
+  --strong-red: #B83B2C;
+  --subtle-red: #C6584C;
+  --dark-green: #2C6340;
+  --light-green: #58A775;
+  --medium-light-green: #459261;
+  --medium-dark-green: #397E53;
+  --theme-colour-text: #5272ff;
+  --theme-colour-background: #27305298;
 }
 
 body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--background);
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
 }
 
 body {
@@ -34,6 +34,7 @@ code {
   transition: margin-left 0.3s;
 }
 
+/* Sidebar Styles */
 .sidebar {
   width: 60px;
   height: 100vh;
@@ -46,6 +47,7 @@ code {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
 }
 
 .sidebar:hover {
@@ -104,30 +106,73 @@ code {
   margin-left: 200px; /* Adjust this margin to match the width of your expanded sidebar */
 }
 
-/* src/styles/App.css */
-
-/* Media Queries for Responsive Design */
+/* Responsive Design */
 
 /* For tablets and below */
 @media only screen and (max-width: 768px) {
   .main-content {
-    margin-left: 0; /* Remove left margin */
-    padding-bottom: 60px; /* Add bottom padding to avoid overlap with bottom sidebar */
+      margin-left: 0; /* Remove left margin */
+      padding-bottom: 60px; /* Add bottom padding to avoid overlap with bottom sidebar */
   }
 
-  .sidebar:hover ~ .main-content {
-    margin-left: 0; /* No change on hover */
+  .sidebar {
+      width: 100%;
+      height: 60px;
+      background-color: var(--side-bar);
+      color: #ffffff;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      transition: none;
+  }
+
+  .sidebar:hover {
+      width: 100%; /* No width change on hover */
+  }
+
+  .sidebar-item {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .icon {
+      width: 35px;
+      height: 35px;
+  }
+
+  .text {
+      display: none; /* Hide text to fit icons in the bottom bar */
+  }
+
+  .sidebar-footer {
+      display: none; /* Hide footer in this layout */
   }
 }
 
 /* For mobile phones */
 @media only screen and (max-width: 480px) {
   .main-content {
-    margin-left: 0; /* Remove left margin */
-    padding-bottom: 50px; /* Add bottom padding to avoid overlap with bottom sidebar */
+      margin-left: 0; /* Remove left margin */
+      padding-bottom: 50px; /* Add bottom padding to avoid overlap with bottom sidebar */
   }
 
-  .sidebar:hover ~ .main-content {
-    margin-left: 0; /* No change on hover */
+  .sidebar {
+      height: 50px;
+  }
+
+  .sidebar-item {
+      height: 40px;
+  }
+
+  .icon {
+      width: 30px;
+      height: 30px;
   }
 }
